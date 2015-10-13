@@ -11,7 +11,7 @@ module FetchBot
       end
 
       client.on :message do |data|
-        MessageSorter.sort_incomming_messages(data, client)
+        IncomingMessage.new(data, client).execute
       end
 
       client.start!
