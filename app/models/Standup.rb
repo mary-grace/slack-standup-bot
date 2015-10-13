@@ -224,6 +224,10 @@ class Standup < ActiveRecord::Base
     end
   end
 
+  def not_complete?
+    status != "complete"
+  end
+
   def complete?
     status == "complete"
   end
