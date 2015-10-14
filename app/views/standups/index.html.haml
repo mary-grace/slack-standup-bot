@@ -50,101 +50,47 @@
               = link_to standups_url(:date => @date.next_day) do
                 %i.glyphicon.glyphicon-chevron-right
               %i.glyphicon.glyphicon-calendar
-      - @standups.each_slice(3) do |standups|
-        .row
+
+      - @standups.each_slice((@standups.size/3.to_f).ceil) do |standups|
+        .col-md-4.standup-card
           - standups.each do |standup|
-            .col-md-4.standup-card
-              .standup-card-wrap
-                .name-section.section.clearfix
-                  -#.user-avatar
-                  .row
-                    .col-lg-3.avatar
-                      = image_tag(standup.avatar_url)
-                    .col-lg-9
-                      %h2 Cobin Dallas
-                      %h3 Some other content
-                / end name section
-                - if standup.today.nil?
-                  .vacation
-                    .text-center
-                      %b Vacation
-                  %br
-                - else
-                  .yesterday-section.section
-                    %h2 What I worked on yesterday:
-                    %ul
-                      %li
-                        = standup.yesterday.tr("<>","").gsub(/\n/, '<br><li>').html_safe
-                  / end yesterday section
-                  .today-section.section
-                    %h2 What I am working on today:
-                    %ul
-                      %li
-                        = standup.today.tr("<>","").gsub(/\n/, '<br><li>').html_safe unless standup.today.nil?
-                  / end today section
-                  .blocks-section.section
-                    %h2 What is in my way:
-                    %ul
-                      %li
-                        = standup.conflicts.tr("<>","").gsub(/\n/, '<br><li>').html_safe unless standup.today.nil?
-                / end blocks section
-        -# .col-md-4.standup-card
-        -#   .standup-card-wrap
-        -#     .name-section.clearfix
-        -#       .user-avatar
-        -#       %h2 Cobin Dallas
-        -#       %h3 Some other content
-        -#     / end name section
-        -#     .yesterday-section
-        -#       %h2 What I worked on yesterday:
-        -#       %ul
-        -#         %li Invoicing
-        -#         %li Talked with Sean Collins
-        -#         %li Checked in on Recontrac, Timer App, and Recruitment App
-        -#         %li Worked on Recontrac with Ben
-        -#     / end yesterday section
-        -#     .today-section
-        -#       %h2 What I am working on today:
-        -#       %ul
-        -#         %li Bring Santiago up to speed on standup project
-        -#         %li Onboard Sean Collins for design work
-        -#         %li Get http://sofetch.io up and running again (First down time this year!)
-        -#     / end today section
-        -#     .blocks-section
-        -#       %h2 What is in my way:
-        -#       %ul
-        -#         %li The gods of website troubles.
-        -#     / end blocks section
-        -# %br
-        -# %br
-        -# .col-md-4.standup-card
-        -#   .standup-card-wrap
-        -#     .name-section.clearfix
-        -#       .user-avatar
-        -#       %h2 Cobin Dallas
-        -#       %h3 Some other content
-        -#     / end name section
-        -#     .yesterday-section
-        -#       %h2 What I worked on yesterday:
-        -#       %ul
-        -#         %li Invoicing
-        -#         %li Talked with Sean Collins
-        -#         %li Checked in on Recontrac, Timer App, and Recruitment App
-        -#         %li Worked on Recontrac with Ben
-        -#     / end yesterday section
-        -#     .today-section
-        -#       %h2 What I am working on today:
-        -#       %ul
-        -#         %li Bring Santiago up to speed on standup project
-        -#         %li Onboard Sean Collins for design work
-        -#         %li Get http://sofetch.io up and running again (First down time this year!)
-        -#     / end today section
-        -#     .blocks-section
-        -#       %h2 What is in my way:
-        -#       %ul
-        -#         %li The gods of website troubles.
-        -#     / end blocks section
+            .standup-card-wrap
+              .name-section.section.clearfix
+                -#.user-avatar
+                .row
+                  .col-lg-3.avatar
+                    = image_tag(standup.avatar_url)
+                  .col-lg-9
+                    %h2 Cobin Dallas
+                    %h3 Some other content
+              / end name section
+              - if standup.today.nil?
+                .vacation
+                  .text-center
+                    %b Vacation
+                %br
+              - else
+                .yesterday-section.section
+                  %h2 What I worked on yesterday:
+                  %ul
+                    %li
+                      = standup.yesterday.tr("<>","").gsub(/\n/, '<br><li>').html_safe
+                / end yesterday section
+                .today-section.section
+                  %h2 What I am working on today:
+                  %ul
+                    %li
+                      = standup.today.tr("<>","").gsub(/\n/, '<br><li>').html_safe unless standup.today.nil?
+                / end today section
+                .blocks-section.section
+                  %h2 What is in my way:
+                  %ul
+                    %li
+                      = standup.conflicts.tr("<>","").gsub(/\n/, '<br><li>').html_safe unless standup.today.nil?
+              / end blocks section
+
     / /container
+
     /
       Bootstrap core JavaScript
       \==================================================

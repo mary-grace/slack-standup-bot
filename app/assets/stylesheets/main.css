@@ -3,7 +3,6 @@ html {
 }
 
 body {
-	background-color: #ebeff2;
 	color: #222;
 	font-family: 'Roboto', sans-serif;
 	font-weight: 300;
@@ -26,24 +25,39 @@ body {
 	padding-bottom: 30px;
 }
 
+.standup-card-wrap:first-child {
+  border-top: 8px solid #EEE;
+}
+
 .standup-card-wrap /* hack because bootstrap is dumb */ {
 	background-color: #fff;
 	border-radius: 2px;
-	box-shadow: 0 1px 3px rgba(0,0,0,.2);
 	display: block;
 	padding: 0;
 	position:relative;
+  border-bottom: 8px solid #EEE;
+  border-right: 8px solid #EEE;
+  border-left: 8px solid #EEE;
 }
+
+.standup-card-wrap .section:first-child {
+	border-top: 1px solid #ddd;
+}
+
 .standup-card-wrap .section {
 	border-bottom: 1px solid #ddd;
+	border-right: 1px solid #ddd;
+	border-left: 1px solid #ddd;
 	padding: 15px;
 }
+
 .standup-card h2 {
 	font-size: 1.6rem;
 	font-weight: 700;
 	margin-bottom: 10px;
 	margin-top: 0;
 }
+
 .standup-card h3 {
 	margin: 0;
 }
@@ -52,6 +66,7 @@ body {
 	margin-top:10px;
 	margin-bottom: 2px;
 }
+
 .name-section h3 {
 	font-size: 1.6rem;
 	font-weight: 300;
