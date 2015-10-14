@@ -62,10 +62,11 @@
                     = image_tag(standup.avatar_url)
                   .col-lg-9
                     %h2 Cobin Dallas
-                    %h3 Some other content
+                    -# %h3 Some other content
               / end name section
               - if standup.today.nil?
                 .vacation
+                  %br
                   .text-center
                     %b Vacation
                 %br
@@ -88,8 +89,7 @@
                     %li
                       = standup.conflicts.tr("<>","").gsub(/\n/, '<br><li>').html_safe unless standup.today.nil?
               / end blocks section
-
-    / /container
+          / /container
 
     /
       Bootstrap core JavaScript
