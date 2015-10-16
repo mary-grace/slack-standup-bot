@@ -31,13 +31,13 @@
             %span.icon-bar
           %a.navbar-brand{:href => "#"} Standup Bot by So Fetch
     .container.main-content
-      .row
-        .col-md-6
-          %h3
+      .row.standup-date
+        .col-md-6.date
+          %h2
             = @date_string
             = @date.strftime('%d')
             = @date.strftime('%b')
-        .col-md-6
+        .col-md-6.date-picker
           %h3
             .text-right
               = link_to standups_url(:date => @date.prev_day) do
@@ -51,9 +51,9 @@
                 %i.glyphicon.glyphicon-chevron-right
               %i.glyphicon.glyphicon-calendar
       - @standups.each_slice(3) do |standups|
-        .row
+        .row.masonry-container
           - standups.each do |standup|
-            .col-md-4.standup-card
+            .col-md-4.standup-card.item
               .standup-card-wrap
                 .name-section.section.clearfix
                   -#.user-avatar
@@ -96,5 +96,9 @@
     / Placed at the end of the document so the pages load faster
     %script{:src => "https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"}
     %script{:src => "js/bootstrap.min.js"}
+
+    %script{:src => "js/masonry.pkgd.min.js"}
+    %script{:src => "js/imagesloaded.pkgd.min.js"}
+    %script{:src => "js/scripts.js"}
     / IE10 viewport hack for Surface/desktop Windows 8 bug
     %script{:src => "js/ie10-viewport-bug-workaround.js"}
