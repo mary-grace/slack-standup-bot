@@ -33,7 +33,7 @@ describe IncomingMessage do
         let(:text) { '-help' }
 
         it 'does not create any new messages' do
-          expect(client).to_not receive(:message)
+          expect(client).to receive(:message)
 
           subject.execute
         end
@@ -60,10 +60,10 @@ describe IncomingMessage do
       end
 
       context 'and given the quit command' do
-        let(:text) { '-quit' }
+        let(:text) { '-quit-standup' }
 
         it 'does not create any new messages' do
-          expect(client).to_not receive(:message)
+          expect(client).to receive(:message)
 
           subject.execute
         end

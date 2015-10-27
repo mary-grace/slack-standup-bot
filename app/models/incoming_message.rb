@@ -25,10 +25,13 @@ class IncomingMessage
 
   # Executes incomming message.
   def execute
-    return if current_user && (current_user.bot? || (channel.standups.empty? && !start?))
+    return if current_user && (current_user.bot? || (channel.standups.empty? && !start? && !help? && !quit?))
 
     if start?
       start_standup
+    elsif current_standup_is_empty?
+      channel.start_today_standup!
+      command.execute unless ![Quit, Help].include?(command.class)
     elsif command
       command.execute
 
@@ -77,6 +80,11 @@ class IncomingMessage
   end
 
   private
+
+  # @return [Boolean]
+  def current_standup_is_empty?
+    Standup.today.empty?
+  end
 
   # @return [User]
   def current_user
