@@ -5,7 +5,7 @@ module FetchBot
       client = Slack::RealTime::Client.new
 
       client.on :hello do
-        group   = client.groups.detect { |c| c['name'] == @settings.name }
+        group   = client.channels.detect { |c| c['name'] == @settings.name }
         channel = Channel.where(name: group['name'], slack_id: group['id']).first_or_initialize
 
         # TODO we need to move all this logic to a separated class
