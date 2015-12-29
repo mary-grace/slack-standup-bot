@@ -24,14 +24,14 @@
                 = @date.strftime('%b')
             .col-md-6.date-picker
               %a.previous-date
-                = link_to 'Previous Day', standups_url(:date => @date.prev_day)
+                = link_to 'Previous Week', standups_url(:date => @date.prev_day)
               - if @date == Date.today
                 |
                 %a.not-active Today
               - else
                 %a.todays-date{:href => root_url} Today
                 %a.next-date
-                  = link_to 'Next Day', standups_url(:date => @date.next_day)
+                  = link_to 'Next Week', standups_url(:date => @date.next_day)
 
           .masonry-container.row.clearfix
             - @standups.each do |standup|
@@ -53,13 +53,13 @@
                           = standup.yesterday
                   - else
                     .yesterday-section.section
-                      %h2 What I worked on yesterday:
+                      %h2 What I worked on last week:
                       %ul
                         %li
                           = standup.yesterday.tr("<>","").gsub(/\n/, '<br><li>').html_safe
                     / end yesterday section
                     .today-section.section
-                      %h2 What I am working on today:
+                      %h2 What I am working on this week:
                       %ul
                         %li
                           = standup.today.tr("<>","").gsub(/\n/, '<br><li>').html_safe unless standup.today.nil?

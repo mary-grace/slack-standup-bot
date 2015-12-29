@@ -15,7 +15,7 @@ class IncomingMessage
         @standup.process_answer(@message['text'])
 
         if @standup.completed?
-          @client.message channel: @message['channel'], text: 'Good Luck Today!'
+          @client.message channel: @message['channel'], text: 'Good Luck This Week!'
         else
           @client.message channel: @message['channel'], text: @standup.current_question
         end
